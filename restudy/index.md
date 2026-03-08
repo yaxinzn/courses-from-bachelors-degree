@@ -18,6 +18,32 @@ hero_desc: A student-perspective restudy archive (for gaps) and playbook archive
   The focus is finance courses, with selected economics/statistics courses included where they support later research. Notes reflect my current understanding and may be incomplete.
 </div>
 
+
+<div class="note-box">
+  <strong>Updates (auto)</strong>
+  <div style="opacity:.88; margin-top:6px;">
+    This window updates automatically after each push to <code>restudy/</code> or <code>playbooks/</code>.
+    Tip: put keywords in your commit message (e.g., “FINM2002 — Greeks, BSM, hedging”) to make the summary informative.
+  </div>
+
+  <div style="margin-top:10px; border:1px solid rgba(0,0,0,.10); border-radius:10px; background:#fff; padding:12px 12px;">
+    {% if site.data.restudy_updates and site.data.restudy_updates.size > 0 %}
+      <ul style="margin:0; padding-left:18px;">
+        {% for u in site.data.restudy_updates %}
+          <li style="margin:8px 0;">
+            <strong>{{ u.date }}</strong>
+            <span style="opacity:.85;">· {{ u.courses }}</span>
+            — {{ u.summary }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div style="opacity:.85;">No updates yet.</div>
+    {% endif %}
+  </div>
+</div>
+
+
 ## Restudy (mark < 80)
 - **[ECON1101](ECON1101/)** — Microeconomics 1 *(Mark: 66, Grade: CR)*
 - **[ECON1102](ECON1102/)** — Macroeconomics 1 *(Mark: 65, Grade: CR)*

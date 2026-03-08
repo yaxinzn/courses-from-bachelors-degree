@@ -1,0 +1,38 @@
+name: Auto-update Restudy window
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "restudy/**"
+      - "playbooks/**"
+      - "scripts/gen_restudy_updates.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Generate restudy updates
+        run: python3 scripts/gen_restudy_updates.py
+      - name: Commit & push if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/restudy_updates.yml
+          git commit -m "chore: update restudy window"
+          git push
