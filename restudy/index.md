@@ -26,7 +26,7 @@ hero_desc: A student-perspective restudy archive (for gaps) and playbook archive
     Tip: put keywords in your commit message (e.g., “FINM2002 — Greeks, BSM, hedging”) to make the summary informative.
   </div>
 
-  <div style="margin-top:10px; border:1px solid rgba(0,0,0,.10); border-radius:10px; background:#fff; padding:12px 12px;">
+  <div style="margin-top:10px; border:1px solid rgba(0,0,0,.10); border-radius:10px; background:#fff; padding:12px 12px; max-height: 60vh; overflow-y: auto;">
     {% if site.data.restudy_updates and site.data.restudy_updates.size > 0 %}
       <ul style="margin:0; padding-left:18px;">
         {% for u in site.data.restudy_updates %}
